@@ -54,8 +54,6 @@ const noticePopup = function(){
     }
 
     function init(options){
-        init_create_html();
-
         monitor(options);
         // 10秒ごとに監視
         setInterval(function(){
@@ -82,7 +80,7 @@ const noticePopup = function(){
         if(notices.length > 0){
             $('.notice_popup').trigger('noticeShowBefore');
 
-            $.each(notices, function(val, idx){
+            $.each(notices, function(idx, val){
                 show_notice(val.title, val.message, idx);
             })
 
@@ -94,12 +92,15 @@ const noticePopup = function(){
     function show_notice(title="", msg="", idx=0){
         init_create_html(idx);
 
-        $(`#${setOptionlist.id}_${idx}`).modal("show");
+        $(`#${setOptionlist.id}_${idx}`).find(".title").text(title);
+        $(`#${setOptionlist.id}_${idx}`).find(".message").text(msg);
+
+        $(`#${setOptionlist.id}_${idx}`).trigger("show");
 
         $(`#${setOptionlist.id}_${idx}`).trigger('noticeMsgText');
 
         setTimeout(function(){
-            $(`#${setOptionlist.id}`).modal("hide");
+            $(`#${setOptionlist.id}_${idx}`).trigger("hide");
         }, 4500);
     }
 
@@ -107,13 +108,35 @@ const noticePopup = function(){
     function init_create_html(idx=0){
         // まだ生成していない場合はhtml生成
         if($(`#${setOptionlist.id}_${idx}`).length === 0){
-            let html = `<div class="speech_bubble color-${setOptionlist.color} mb-5 py-3">`;
-            html += '<div class="title">タイトル</div>';
-            html += '<div class="message">吹出口を中央にしたシンプルな吹き出し。吹出口を中央にしたシンプルな吹き出し吹出口を中央にしたシンプルな吹き出し</div>';
+            let html = `<div class="notice_popup" id="${setOptionlist.id}_${idx}">`;
+            html += '<span class="batsu"></span>';
+            html += `<div class="speech_bubble color-${setOptionlist.color} mb-5 py-3">`;
+            if(setOptionlist.titleShow){
+                html += '<div class="title"></div>';
+            }
+            if(setOptionlist.msgShow){
+                html += '<div class="message"></div>';
+            }
+            html += '</div>';
             html += '</div>';
             $(html).appendTo("#gen_maincontent");
         }
     }
+
+    // ×ボタン押下
+    $(document).on("click", ".batsu", function(){
+        $(this).parent(".notice_popup").trigger("hide");
+    })
+
+    // 表示処理
+    $(document).on("show", ".notice_popup", function(){
+        $(this).fadeIn(500);
+    })
+
+    // 非表示処理
+    $(document).on("hide", ".notice_popup", function(){
+        $(this).fadeOut(500);
+    })
 
     // エラーログ用
     function error_log(msg=''){

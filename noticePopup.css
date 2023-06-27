@@ -1,9 +1,15 @@
 /* 吹き出し設定 */
+.notice_popup {
+    width: 20vw;
+    position: fixed;
+    bottom: 2rem;
+    right: 5rem;
+}
+
 .speech_bubble {
     position: relative;
     padding: 1rem;
     border-radius: 10px;
-    width: 20vw;
 }
 
 .speech_bubble:before,
@@ -78,3 +84,30 @@
 .speech_bubble.color-red .title {
     border-bottom: #ff4242 solid 1px;
 }
+
+/* 閉じるボタン */
+.batsu {
+    position: relative;
+    left: 96%;
+    top: 13%;
+    z-index: 10;
+}
+
+.batsu::before, .batsu::after { /* 共通設定 */
+    content: "";
+    position: absolute;
+    margin-top: 10px;
+    top: 50%;
+    left: 50%;
+    width: 2px; /* 棒の幅（太さ） */
+    height: 15px; /* 棒の高さ */
+    background: #717171;
+}
+
+.batsu::before {
+    transform: translate(-50%,-50%) rotate(45deg);
+}
+.batsu::after {
+    transform: translate(-50%,-50%) rotate(-45deg);
+}
+/* 閉じるボタン */
