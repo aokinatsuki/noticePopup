@@ -1,0 +1,80 @@
+/* 吹き出し設定 */
+.speech_bubble {
+    position: relative;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 20vw;
+}
+
+.speech_bubble:before,
+.speech_bubble:after {
+    position: absolute;
+    left: 50%;
+    content: "";
+    height: 0;
+    width: 0;
+}
+
+.speech_bubble:before {
+    top: 100%;
+    border: 9px solid;
+    border-color: transparent;
+    margin-left: -9px;
+}
+
+.speech_bubble:after {
+    top: 99%;
+    border: 8px solid;
+    border-color: transparent;
+    margin-left: -8px;
+}
+/* 吹き出し文字の見た目 */
+.speech_bubble .message,
+.speech_bubble .title {
+    line-height: 1.5;
+}
+/* 吹き出しタイトル */
+.speech_bubble .title {
+    margin-bottom: 1rem;
+}
+/* 吹き出し設定 */
+
+
+/* color: default */
+.speech_bubble.color-default {
+    border: 2px solid #d0f1ff;
+    background: #d0f1ff;
+}
+.speech_bubble.color-default:before {
+    border-top-color: #d0f1ff;
+}
+.speech_bubble.color-default:after {
+    border-top-color: #d0f1ff;
+}
+.speech_bubble.color-default .message,
+.speech_bubble.color-default .title {
+    color: #000;
+}
+.speech_bubble.color-default .title {
+    border-bottom: #00bfff solid 1px;
+}
+
+
+/* color: red */
+.speech_bubble.color-red {
+    border: 2px solid #ffb4b4;
+    background: #ffb4b4;
+}
+.speech_bubble.color-red:before {
+    border-top-color: #ffb4b4;
+}
+.speech_bubble.color-red:after {
+    border-top-color: #ffb4b4;
+}
+.speech_bubble.color-red .message,
+.speech_bubble.color-red .title {
+    color: #000;
+}
+.speech_bubble.color-red .title {
+    border-bottom: #ff4242 solid 1px;
+}
