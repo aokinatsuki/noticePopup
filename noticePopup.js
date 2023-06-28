@@ -26,11 +26,12 @@ const noticePopup = function(){
 
     let setOptionlist = {};
 
-    // カスタム色設定
-    const colors = {
-        red: "red",
-        default: "ddd"
-    };
+    // カスタム色設定可能なもの
+    /**
+     * red
+     * green
+     * default
+     */
 
     // 初期設定
     noticePopup.prototype.init = function(options={}){
@@ -90,10 +91,7 @@ const noticePopup = function(){
 
     // 通知情報表示処理
     function show_notice(title="", msg="", idx=0){
-        init_create_html(idx);
-
-        $(`#${setOptionlist.id}_${idx}`).find(".title").text(title);
-        $(`#${setOptionlist.id}_${idx}`).find(".message").text(msg);
+        init_create_html(idx, title, msg);
 
         $(`#${setOptionlist.id}_${idx}`).trigger("show");
 
@@ -101,21 +99,21 @@ const noticePopup = function(){
 
         setTimeout(function(){
             $(`#${setOptionlist.id}_${idx}`).trigger("hide");
-        }, 4500);
+        }, 8000);
     }
 
     // 通知の吹き出しのhtml生成(初回に呼び出す処理)
-    function init_create_html(idx=0){
+    function init_create_html(idx=0, title="", msg=""){
         // まだ生成していない場合はhtml生成
         if($(`#${setOptionlist.id}_${idx}`).length === 0){
             let html = `<div class="notice_popup" id="${setOptionlist.id}_${idx}">`;
             html += '<span class="batsu"></span>';
-            html += `<div class="speech_bubble color-${setOptionlist.color} mb-5 py-3">`;
+            html += `<div class="notice_popup_content color-${setOptionlist.color} mb-5 py-3">`;
             if(setOptionlist.titleShow){
-                html += '<div class="title"></div>';
+                html += '<div class="title">'+ title +'</div>';
             }
             if(setOptionlist.msgShow){
-                html += '<div class="message"></div>';
+                html += '<div class="message">'+ msg +'</div>';
             }
             html += '</div>';
             html += '</div>';
