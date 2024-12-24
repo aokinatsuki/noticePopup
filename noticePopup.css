@@ -1,17 +1,17 @@
 /* 吹き出し設定 */
 .notice_popup {
-    width: 20vw;
-    position: fixed;
-    bottom: 1rem;
-    right: 4rem;
-    z-index: 9;
-    opacity: 0.8;
+    width: 20vw;            /* 幅 */
+    position: fixed;        /* 画面に固定 */
+    bottom: 1rem;           /* 画面下からの距離 */
+    right: 4rem;            /* 画面右からの距離 */
+    z-index: 9;             /* 重なり順 */
+    opacity: 0.8;           /* 透過度 */
 }
 
 .notice_popup_content {
     position: relative;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 10px;     /* 角丸 */
 }
 
 /* 吹き出し文字の見た目 */
@@ -19,13 +19,14 @@
 .notice_popup_content .title {
     line-height: 1.3;
 }
+
 /* 吹き出しタイトル */
 .notice_popup_content .title {
     margin-bottom: 1rem;
     padding-bottom: 0.2rem;
 }
-/* 吹き出し設定 */
 
+/* 吹き出しカラー設定 */
 
 /* color: default */
 .notice_popup_content.color-default {
@@ -45,7 +46,6 @@
 .notice_popup_content.color-default .title {
     border-bottom: #00bfff solid 1px;
 }
-
 
 /* color: red */
 .notice_popup_content.color-red {
@@ -85,13 +85,12 @@
     border-bottom: #2fcdb4 solid 1px;
 }
 
-
 /* 閉じるボタン */
 .batsu {
     position: relative;
-    left: 95%;
-    top: 13%;
-    z-index: 10;
+    left: 44%;               /* 右端に配置 */
+    top: 13%;                /* 上から少し下 */
+    z-index: 10;             /* 重なり順 */
 }
 
 .batsu::before, .batsu::after { /* 共通設定 */
@@ -102,7 +101,7 @@
     left: 50%;
     width: 1px; /* 棒の幅（太さ） */
     height: 15px; /* 棒の高さ */
-    background: #717171;
+    background: #717171; /* 色 */
 }
 
 .batsu::before {
