@@ -7,7 +7,7 @@
 ```javascript
 $.noticePopup({
   isServerSide: true, // ※trueの場合は必ずurlの指定必須
-  url: 'ajaxの URL', // ※サーバーサイドから通知データを受け取る場合のみ指定。
+  url: URL, // ※サーバーサイドから通知データを受け取る場合のみ指定。
   color: 'green', // カラーの指定（デフォルト：blue）種類：red, blue, green
   interval: 30000 // サーバー監視頻度
 });
